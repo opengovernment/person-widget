@@ -1,11 +1,11 @@
-# Address Widget
+# Person Widget
 
 This is the basis for a third party widget for AskThem.io, it will be
 distributed via jQuery loader and multiple instances of the Ember app will be
 able to run on a page.
 
-It is an Ember.js app that allows users to look up their elected officials and
-ask a question on AskThem.io
+It is an Ember.js app that allows users to ask someone specific, like
+an elected official, ask a question on AskThem.io
 
 This README outlines the details of collaborating on this Ember application.
 

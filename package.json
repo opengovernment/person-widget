@@ -1,7 +1,7 @@
 {
-  "name": "address-widget",
+  "name": "person-widget",
   "version": "0.0.0",
-  "description": "Small description for address goes here",
+  "description": "An Ember.js app that allows users to ask someone specific, like an elected official, a question on AskThem.io.",
   "private": true,
   "directories": {
     "doc": "doc",

@@ -1,5 +1,5 @@
 {
-  "name": "address-widget",
+  "name": "person-widget",
   "dependencies": {
     "jquery": "^1.11.1",
     "ember": "canary",
