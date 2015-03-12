@@ -20,7 +20,7 @@ test('it takes person object & returns things like title, jurisdiction, etc.',
                  'party': 'Independent',
                  'state': 'vt' };
 
-  var expectedDetails = 'Senator, Independent\n';
+  var expectedDetails = 'Senator, Vt, Independent\n';
 
   Ember.run(function() {
     component.set('person', person);
