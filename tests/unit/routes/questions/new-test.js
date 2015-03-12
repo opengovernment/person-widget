@@ -5,8 +5,24 @@ import {
 
 moduleFor('route:questions/new', {
   needs: ['controller:application',
-          'controller:people',
           'controller:questions.new']
+});
+
+test('renderTemplate sets application.duringQuestionSteps to true',
+     function(assert) {
+  var route = this.subject(),
+      applicationController = route.controllerFor('application'),
+      didRender;
+
+  // http://discuss.emberjs.com/t/test-isolation-aka-how-wrong-am-i-doing-it/7162/2
+  route.render = function mockRender(route) {
+    didRender = true;
+  };
+
+  route.renderTemplate();
+
+  assert.equal(applicationController.get('duringQuestionSteps'), true);
+  assert.ok(didRender, 'expected to render');
 });
 
 test('format sanitizes and strips extra spaces', function(assert) {
@@ -40,7 +56,6 @@ test('save submits question and takes user to thanks route',
 
   var route = this.subject(),
       applicationController = route.controllerFor('application'),
-      peopleController = route.controllerFor('people'),
       newController = route.controllerFor('questions.new'),
       model,
       didPost,
@@ -48,7 +63,7 @@ test('save submits question and takes user to thanks route',
 
   setUpApplicationController(applicationController);
 
-  setUpPeopleController(peopleController);
+  setUpPerson(applicationController);
 
   newController.set('email', 'test_user@example.com');
 
@@ -58,7 +73,6 @@ test('save submits question and takes user to thanks route',
   newController.set('model', model);
 
   var payLoad = preparePayload(applicationController,
-                               peopleController,
                                newController,
                                model);
 
@@ -76,7 +90,7 @@ test('save submits question and takes user to thanks route',
   route.transitionTo = function mockTransitionTo(route) {
     didTransition = true;
     assert.equal(route, 'thanks',
-                 'expected transitionTo people');
+                 'expected transitionTo thanks');
   };
 
   route.send('save');
@@ -100,15 +114,14 @@ function setUpApplicationController(controller) {
   });
 }
 
-function setUpPeopleController(controller) {
-  controller.set('selectedPerson', {
+function setUpPerson(controller) {
+  controller.set('attrs.person', {
     id: '1',
     full_name: 'Bernard Sanders'
   });
 }
 
 function preparePayload(applicationController,
-                        peopleController,
                         newController,
                         model) {
   var fullQuestion = model,
@@ -118,7 +131,7 @@ function preparePayload(applicationController,
     email: newController.get('email')
   };
 
-  fullQuestion.person_id = peopleController.get('selectedPerson.id');
+  fullQuestion.person_id = applicationController.get('attrs.person.id');
 
   fullPartner.submitted_address = applicationController.get('address');
 

@@ -7,7 +7,7 @@ moduleFor('route:application', {
   needs: ['controller:application']
 });
 
-test('backToStart clears address and transitions to application route',
+test('backToStart transitions to application route',
      function(assert) {
   var route = this.subject(),
       controller = route.controllerFor('application'),
@@ -22,6 +22,5 @@ test('backToStart clears address and transitions to application route',
 
   route.send('backToStart');
 
-  assert.equal(controller.get('address'), null);
   assert.ok(didTransition, 'expected to transition');
 });

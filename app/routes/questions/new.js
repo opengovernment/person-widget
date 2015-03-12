@@ -4,6 +4,7 @@ import Question from '../../models/question';
 
 export default Ember.Route.extend({
   renderTemplate: function() {
+    this.controllerFor('application').set('duringQuestionSteps', true);
     this.render({ into: 'application', outlet: 'question-steps' });
   },
   model: function() {
@@ -59,7 +60,7 @@ export default Ember.Route.extend({
 
         var question = this.controllerFor('questions.new').get('model');
 
-        var person = this.controllerFor('people').get('selectedPerson');
+        var person = this.controllerFor('application').get('attrs.person');
         question.person_id = person.id;
 
         var address = this.controllerFor('application').get('address');

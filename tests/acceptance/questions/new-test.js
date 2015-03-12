@@ -16,11 +16,7 @@ module('Acceptance: Questions.new', {
 test('when recipient is chosen, question and email form appears', function(assert) {
   visit('/');
 
-  fillIn('input.address-field', '05602');
-
-  click('.sign');
-
-  click('.person:first');
+  click('.start');
 
   andThen(function() {
     assert.equal(find('textarea.summary-input').val(), 'QUESTION_SUMMARY');
@@ -32,11 +28,7 @@ test('when recipient is chosen, question and email form appears', function(asser
 test('when question and email form is filled out, user is thanked', function(assert) {
   visit('/');
 
-  fillIn('input.address-field', '05602');
-
-  click('.sign');
-
-  click('.person:first');
+  click('.start');
 
   fillIn('input.email-input', 'test_user@example.com');
 

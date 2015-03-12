@@ -17,11 +17,7 @@ module('Acceptance: Thanks', {
 test('when process is finished, user is thanked', function(assert) {
   visit('/');
 
-  fillIn('input.address-field', '05602');
-
-  click('.sign');
-
-  click('.person:first');
+  click('.start');
 
   fillIn('input.email-input', 'test_user@example.com');
 

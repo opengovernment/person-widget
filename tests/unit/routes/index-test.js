@@ -4,20 +4,18 @@ import {
 } from 'ember-qunit';
 
 moduleFor('route:index', {
+  needs: ['controller:application']
 });
 
-test('search takes user to people route', function(assert) {
-  var route = this.subject(),
-      didTransition;
+// test('model returns array of people', function(assert) {
+//   var route = this.subject(),
+//       applicationController = route.controllerFor('application');
 
-  // http://discuss.emberjs.com/t/test-isolation-aka-how-wrong-am-i-doing-it/7162/2
-  route.transitionTo = function mockTransitionTo(route) {
-    didTransition = true;
-    assert.equal(route, 'people',
-                 'expected transitionTo people');
-  };
+//   applicationController.set('attrs.person.id', 'S000033');
 
-  route.send('search');
-
-  assert.ok(didTransition, 'expected to transition');
-});
+//   route.get('model').then(
+//     function(result) {
+//       assert.equal(result, {});
+//     }
+//   );
+// });

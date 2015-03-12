@@ -1,9 +1,8 @@
-<form {{action "search" on="submit"}}>
-  <fieldset>
-    {{input value=address placeholder="Your address or zip code" class="address-field zip"}}
-    <div class="button">
-      <div class="sign" {{action "search"}}>
-      </div>
-    </div>
-  </fieldset>
-</form>
+<div class="person">
+  <div class="avatar">
+    {{cdn-avatar-from imageUrl=person.photo_url}}
+  </div>
+  {{person-details person=person}}
+</div>
+
+{{#link-to 'questions.new' tagName="button" class="start"}}Get started{{/link-to}}

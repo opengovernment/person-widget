@@ -4,16 +4,16 @@ import {
 } from 'ember-qunit';
 
 moduleFor('controller:thanks', {
-  needs: ['controller:people']
+  needs: ['controller:application']
 });
 
-test('it has same selectedPerson as people controller', function(assert) {
+test('it has same selectedPerson as application controller', function(assert) {
   var controller = this.subject(),
-      peopleController = controller.get('controllers.people'),
+      applicationController = controller.get('controllers.application'),
       person = { 'full_name': 'Bernard Sanders' };
 
-  peopleController.set('selectedPerson', person);
+  applicationController.set('selectedPerson', person);
 
   assert.equal(controller.get('selectedPerson'),
-               peopleController.get('selectedPerson'));
+               applicationController.get('attrs.person'));
 });

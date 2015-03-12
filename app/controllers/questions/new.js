@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['people', 'application'],
-  selectedPerson: Ember.computed.alias('controllers.people.selectedPerson'),
+  needs: ['application'],
+  selectedPerson: Ember.computed.alias('controllers.application.attrs.person'),
   errorMessage: null,
   titleIsValid: function() {
     var title = this.get('model.title');

@@ -2,10 +2,8 @@
   <h2 class="headline">{{sanitize-html attrs.headline "relaxed"}}</h2>
 
   {{#if attrs.question.summary}}
-    <div class="description"><p>{{sanitize-html attrs.question.summary "relaxed"}}</p></div>
+    <div class="description question-summary-display"><p>{{sanitize-html attrs.question.summary "relaxed"}}</p></div>
   {{/if}}
-
-  <div class="description"><p>Choose from all your elected officials & ask them about this article or topic.</p></div>
 
   {{outlet}}
 

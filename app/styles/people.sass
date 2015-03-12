@@ -19,27 +19,18 @@
       width: 100%
       height: auto
 
-  .people-list
-    list-style: none
-
-  .people-list > li div.avatar
+  .person div.avatar
     max-width: 60px
     vertical-align: top
 
-  .people-list .avatar
+  .person .avatar
     width: 60px
     height: 60px
 
-  .people-list > li
-    display: inline-block
+  .person
     padding-bottom: 30px
-    @media (min-width: 420px)
-      width: 50%
-      float: left
     div.person-info
       display: inline-block
-      margin-left: 5.128205128205%
-      width: 76.470588235294%
       h2
         color: #3b626c
         display: inline-block
@@ -57,64 +48,3 @@
         +Helvetica
         font-weight: 100
         line-height: 1.385em
-
-  // Recipient Selection
-  .people-list.select-person
-    li
-      background: #f9f9f9
-      cursor: pointer
-      height: 165px
-      width: 43%
-      margin-right: 1%
-      padding: 2.5%
-      border-radius: 3px
-      border: 1px solid #E4E4E4
-      margin-bottom: 1%
-      position: relative
-      &:hover, &.selected, &.deselected:hover
-        +border-radius(3px)
-        top: -3px
-        position: relative
-      &.selected
-        border-color: #a7c578
-        span.selected
-          display: block
-          color: #a7c578
-          position: absolute
-          top: 6px
-          right: 6px
-          font-size: 18px
-          width: auto
-      &.deselected
-      div.select_box
-        display: none
-      h2
-        margin-left: 2.5%
-        display: inline-block
-      div.person-info
-        margin-left: 0
-        width: 100%
-      span.selected
-        position: absolute
-        top: .75em
-        right: 2em
-        display: none
-        font-size: 24px
-        color: $green
-
-  label
-    margin-bottom: 12px
-    display: block
-    font:
-      size: 1.125em
-      weight: 600
-    line-height: 1em
-    color: $darkblue
-    span.details
-      margin-top: 6px
-      display: block
-      font:
-        size: 0.889em
-        weight: normal
-      line-height: 1.5em
-      color: $middleblue
