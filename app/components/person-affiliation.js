@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
     if (!Ember.isEmpty(person.most_recent_district)) {
       affiliation.push(person.most_recent_district);
-    } else if (!Ember.isEmpty(person.state)) {
+    } else if (!Ember.isEmpty(person.state) && person.state !== 'unaffiliated') {
       var stateParts = person.state.split('-'),
           stateCode = stateParts.shift();
 
