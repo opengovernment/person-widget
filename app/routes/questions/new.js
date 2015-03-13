@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { sanitize } from 'ember-sanitize/utils/sanitize';
 import Question from '../../models/question';
+import ajax from 'ic-ajax';
 
 export default Ember.Route.extend({
   renderTemplate: function() {
@@ -16,6 +17,30 @@ export default Ember.Route.extend({
                              originating_url: document.URL,
                              user: { email: null }
                            });
+  },
+  setAddressFromIp: function() {
+    var geoAddress,
+        freeGeoIp = ajax('http://freegeoip.net/json/'),
+        _this = this;
+
+    freeGeoIp.then(function(geoData) {
+      geoAddress = geoData.city;
+      if (geoData.city !== geoData.region_name) {
+        geoAddress = geoAddress + ', ' + geoData.region_name;
+      }
+
+      if (geoData.country_code !== 'US') {
+        geoAddress = geoAddress + ', ' + geoData.country_name;
+      } else {
+        geoAddress = geoData.zip_code;
+      }
+      _this.controllerFor('application').set('address', geoAddress);
+    });
+  },
+  setupController: function(controller, model) {
+    this._super(controller, model);
+
+    this.setAddressFromIp();
   },
   format: function(string) {
     if (!Ember.isEmpty(string)) {
@@ -74,7 +99,13 @@ export default Ember.Route.extend({
           partner: partner
         };
 
-        this.apijax.POST('us/questions.json', payLoad);
+        var url;
+        if (person.state !== 'unaffiliated') {
+          url = person.state;
+        }
+        url = url + '/questions.json';
+
+        this.apijax.POST(url, payLoad);
 
         this.transitionTo('thanks');
       } else {

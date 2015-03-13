@@ -51,6 +51,20 @@ test('guessPartner returns partner from window.location if no partner given',
   assert.equal(route.guessPartner(null).name, expected.name);
 });
 
+// test('returns address derived from users ip address',
+//      function(assert) {
+
+//   var route = this.subject(),
+//       applicationController = route.controllerFor('application');
+
+//   var result = route.send('setAddressFromIp');
+
+//   Ember.run(function() {
+//     assert.equal(applicationController.get('address'),
+//                  'Auckland, Auckland, New Zealand');
+//   });
+// });
+
 test('save submits question and takes user to thanks route',
      function(assert) {
 
