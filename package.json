@@ -24,6 +24,7 @@
     "ember-apijax": "0.2.1",
     "ember-cli": "^0.2.0",
     "ember-cli-app-version": "0.3.2",
+    "ember-cli-askthem-person-details": "file:../../../../../var/folders/hg/klz90hy524v2m4prxvnnqvlw0000gn/T/npm-50958-9bd3feef/git-cache-be41392bd109/2b2ca3f377d21a716e699a9dc9681beef78120af",
     "ember-cli-babel": "^4.0.0",
     "ember-cli-betamax": "git://github.com/simplereach/ember-cli-betamax",
     "ember-cli-content-security-policy": "0.3.0",
