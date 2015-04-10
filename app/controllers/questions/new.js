@@ -4,18 +4,18 @@ export default Ember.Controller.extend({
   needs: ['application'],
   selectedPerson: Ember.computed.alias('controllers.application.attrs.person'),
   errorMessage: null,
-  titleIsValid: function() {
+  titleIsValid: Ember.computed('model.title', function() {
     var title = this.get('model.title');
 
     return (!Ember.isEmpty(title) && title.length > 2);
-  }.property('model.title'),
-  emailIsValid: function() {
+  }),
+  emailIsValid: Ember.computed('model.user.email', function() {
     var email = this.get('model.user.email'),
         re = new RegExp(/\S+@\S+\.\S+/);
 
     return (!Ember.isEmpty(email) && re.test(email));
-  }.property('model.user.email'),
-  isValid: function() {
+  }),
+  isValid: Ember.computed('titleIsValid', 'emailIsValid', function() {
     return (this.get('titleIsValid') && this.get('emailIsValid'));
-  }.property('titleIsValid', 'emailIsValid')
+  })
 });
